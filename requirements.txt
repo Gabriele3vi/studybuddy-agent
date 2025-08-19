@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-openai
+python-dotenv
+pydantic
+pymysql
+PyPDF2
+python-docx
+langgraph
+python-telegram-bot
+duckduckgo-search
+wikipedia
