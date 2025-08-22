@@ -51,7 +51,7 @@ def get_agent():
                 If you are runned as a telegram bot, tell the user to just send the file, not to send the file path. Otherwise,
                 you need the path to get the file.
 
-                to the list_notes tool, ALWAYS pass an empty string as argument
+                If the user asks to list their notes, use the list_notes tool, and ALWAYS pass the string "test" as argument
 
                 If you find markdown character in the text, remove them.
 
