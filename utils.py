@@ -20,19 +20,22 @@ import pymysql.cursors
 from pathlib import Path
 import datetime as dt
 import numpy as np
+import ssl
+
+ctx = ssl.create_default_context()
+
 
 load_dotenv()
 
 def get_db_connection():
     connection = pymysql.connect(
         host = os.getenv('tidb_host'),
-        port = os.getenv('tidb_port'),
+        port = int(os.getenv('tidb_port')),
         user = os.getenv('tidb_user'),
         password = os.getenv('tidb_pass'),
         database = os.getenv('tidb_db'),
         ssl_verify_cert = True,
-        ssl_verify_identity = True,
-        ssl_ca = "/etc/ssl/cert.pem"
+        ssl_verify_identity = True
     )
 
     return connection
