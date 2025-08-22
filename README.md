@@ -30,16 +30,61 @@ Make sure you have Python 3.10+ installed, then install the required packages:
 pip install -r requirements.txt
 ```
 
+### 2. Set up your TiDB account
+1. Create an account on TiDB Cloud
+
+2. Create a database.
+
+3. Using the SQL editor, create the following tables:
+    ```
+    CREATE TABLE notes (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(55),
+    ext VARCHAR(10),
+    upload_timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    ); 
+
+    CREATE TABLE note_chunks (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    note_id VARCHER(55),
+    chunck_order INTEGER,
+    content TEXT,
+    embedding VECTOR(1536),
+    VECTOR INDEX idx_embedding ((VEC_COSINE_DISTANCE(embedding)))
+    )
+    ```
+4. Click the button "Connect" and copy the following parameters into a ```.env``` file with the structure:
+
+```
+tidb_pass=""
+tidb_user='"
+tidb_host=""
+tidb_port=""
+tidb_db=""
+```
+
+### 3. Get a OpenAI API key
+
+Get an openAI API key and copy it into the .env file, as:
+
+```
+openai_api_key=""
+```
 
 ### 2. Set up your Telegram bot
 You can try studybuddy with the bot @hackaton_study_buddy_bot.
 
 If you prefer to build one from scratch: 
-- Create a bot via BotFather on Telegram.
-- Copy the generated bot token.
-- Add it to a configuration file under the variable name ```telegram_bot_api_key```
+1. Create a bot via BotFather on Telegram.
+2. Copy the generated bot token.
+3. Add it to the .env file under the variable name
+ 
+    ```
+    telegram_bot_api_key=""
+    ```
 
 
+### 3. Run the script
 After installing the required dependencies and setting up your environment, you can start Studybuddy by running the main script:
 
 ```

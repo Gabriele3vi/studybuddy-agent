@@ -26,10 +26,10 @@ load_dotenv()
 def get_db_connection():
     connection = pymysql.connect(
         host = os.getenv('tidb_host'),
-        port = 4000,
+        port = os.getenv('tidb_port'),
         user = os.getenv('tidb_user'),
         password = os.getenv('tidb_pass'),
-        database = "test",
+        database = os.getenv('tidb_db'),
         ssl_verify_cert = True,
         ssl_verify_identity = True,
         ssl_ca = "/etc/ssl/cert.pem"
